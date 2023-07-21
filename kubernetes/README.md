@@ -2,6 +2,7 @@
 Here are scripts that will easily and automatically deploy a kubernetes cluster without a worker.
 You can customize the files as you see fit.
 
+I didn't want to voluntarily give kubeclt execution rights to vagrant user
 
 Vagrantfile => allows to deploy a virtual machine with the bento/Ubuntu 20.04 linux operating system
 add-on.sh => script in bash for adding a user other than vagrant when deploying the virtual machine in VirtualBox
