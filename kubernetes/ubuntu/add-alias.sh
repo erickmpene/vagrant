@@ -50,5 +50,5 @@ fi
 EOF
 
 source ~/.bashrc
-echo "Voici l'adresse ip pour se connecter en ssh : "
+echo "Here is the ip address to connect in ssh : "
 hostname -I

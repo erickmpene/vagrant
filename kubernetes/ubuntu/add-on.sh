@@ -17,6 +17,6 @@ echo "Public key for $user :"
 cat /home/"$user"/.ssh/id_rsa.pub
 echo "The user $user has been successfully created with the password $password and an RSA key pair."
 usermod -aG sudo "$user"
-echo "PUT YOUR PUBLIC KEY HERE !!!" > /home/"$user"/.ssh/authorized_keys
 echo $HOSTNAME
 hostname -I
+
