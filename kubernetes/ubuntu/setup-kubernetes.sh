@@ -87,7 +87,9 @@ EOF
 	echo "###############  TOKEN FOR JOIN CLUSTER #####################################"
 	echo "#############################################################################"
 	kubeadm token create --print-join-command > join-node.txt
-	echo " Ci-dessous la commande pour joindre un nouvau worker au cluster Kubernetes"
+	realpath join-node.txt
+	echo " Below is the command to join a new worker to the Kubernetes cluster "
+	echo "#####################################################################"
 	cat join-node.txt 
 
 fi

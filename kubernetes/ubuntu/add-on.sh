@@ -13,10 +13,10 @@ chown -R "$user":"$user" /home/"$user"/.ssh
 chmod 700 /home/"$user"/.ssh
 chmod 600 /home/"$user"/.ssh/authorized_keys
 ssh-keygen -t rsa -b 4096 -C "clé pour $user" -N "" -f /home/"$user"/.ssh/id_rsa
-echo "Clé publique pour $user :" 
+echo "Public key for $user :" 
 cat /home/"$user"/.ssh/id_rsa.pub
-echo "Utilisateur $user créé avec succès avec le mot de passe $password et une paire de clés RSA."
+echo "The user $user has been successfully created with the password $password and an RSA key pair."
 usermod -aG sudo "$user"
-echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEe2Ox3VxwJUCaIOhTpU0y6Yvlq6cTH6msiZluedh3Xl jenkins" > /home/"$user"/.ssh/authorized_keys
+echo "PUT YOUR PUBLIC KEY HERE !!!" > /home/"$user"/.ssh/authorized_keys
 echo $HOSTNAME
 hostname -I
