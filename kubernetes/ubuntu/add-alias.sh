@@ -48,4 +48,9 @@ EOF
 
 source ~/.bashrc
 echo "Here is the ip address to connect in ssh : "
-hostname -I
+
+hostname -I | cut -d ' ' -f 2
+
+echo " Below is the command to join a new worker to the Kubernetes cluster "
+echo "#####################################################################"
+cat /home/vagrant/join_token.txt
