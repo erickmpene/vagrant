@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+
+hostname= "master-node"
+network = "private_network"
+type_network = "dhcp"
+ip_private = "10.0.0.1"
+
+Vagrant.configure("2") do |config|
+  config.vm.define "ubuntu" do |master|
+    master.vm.box = "bento/ubuntu-20.04"
+    master.vm.hostname = hostname
+    master.vm.network network, type: type_network
+    master.vm.provider "virtualbox" do |v|
+      v.name = hostname
+      v.memory = 2048
+      v.cpus = 2
+    end
+  config.vm.provision "shell", path: "add-on.sh"
+  config.vm.provision "shell", path: "setup-kubernetes.sh"
+  config.vm.provision "shell", path: "add-alias.sh"
+  end
+end
