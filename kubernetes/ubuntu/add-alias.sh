@@ -23,10 +23,6 @@ fi
  alias kgd='kubectl get deployment -o wide'
  alias ka='kubectl apply -f'
  alias kgn='kubectl get node -o wide'
- alias w1='kubectl describe nodes worker1'
- alias w2='kubectl describe nodes worker2'
- alias w3='kubectl describe nodes worker3'
- alias w4='kubectl describe nodes worker4'
  alias kapi='kubectl api-resources -v 6 -o wide'
 
  export PATH=$PATH:/usr/local/sbin
@@ -39,8 +35,9 @@ fi
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias ll='ls -lart'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
