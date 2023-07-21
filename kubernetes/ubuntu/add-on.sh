@@ -1,7 +1,7 @@
 #! /bin/bash
 
-user="myuser"
-password="Pa$$w0rd"
+user="my_user"
+password="my_password"
 apt-get update
 apt-get install -y sudo
 apt-get install -y htop vim git net-tools dnsutils tcptraceroute ccze tree
