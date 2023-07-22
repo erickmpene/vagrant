@@ -7,11 +7,6 @@
 apt update 
 apt-get install -y ca-certificates curl gnupg lsb-release apt-transport-https ntp git 
 
-if ! [ $USER = root ]
-then
-	echo run this script with sudo
-	exit 3
-fi
 
 # setting MYOS variable
 MYOS=$(hostnamectl | awk '/Operating/ { print $3 }')
@@ -87,14 +82,8 @@ EOF
 
 	echo "###############  TOKEN FOR JOIN CLUSTER #####################################"
 	echo "#############################################################################"
-	r1=$(hostname -I | cut -d ' ' -f 2)
-	r2=$(kubeadm token create --print-join-command | cut -d ' ' -f 3)
 
 	kubeadm token create --print-join-command > join_token.txt
-	sed -i "s/$r2/$r1:6443/g" join_token.txt
-
-	cat join_token.txt
-
 	realpath join_token.txt
 	echo " Below is the command to join a new worker to the Kubernetes cluster "
 	echo "#####################################################################"
