@@ -2,7 +2,7 @@
 MyUser=didier
 sudo apt update
 sudo apt upgrade -y 
-sudo apt install -y python3 git nano curl wget net-tools zsh 
+sudo apt install -y python3 python3-pip git nano curl wget net-tools zsh 
 sudo useradd -m -s /bin/zsh $MyUser 
 sudo usermod -aG sudo $MyUser
 sudo -u $MyUser ssh-keygen -t rsa -N '' -f /home/$MyUser/.ssh/id_rsa <<< y

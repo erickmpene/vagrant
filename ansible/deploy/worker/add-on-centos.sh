@@ -4,7 +4,7 @@
 MyUSer=didier
 yum -y update
 yum -y install epel-release
-yum install -y python3 git nano curl wget net-tools zsh 
+yum install -y python3 python3-pip git nano curl wget net-tools zsh 
 sudo useradd -m -s /bin/zsh $MyUSer  
 sudo usermod -aG wheel $MyUser
 sudo -u $MyUser ssh-keygen -t rsa -N '' -f /home/$MyUser/.ssh/id_rsa <<< y
