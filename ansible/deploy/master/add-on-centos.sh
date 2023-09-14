@@ -6,7 +6,7 @@ yum install -y python3 git nano curl wget net-tools zsh
 sudo useradd -m -s /bin/zsh MyUser 
 sudo usermod -aG wheel MyUser
 sudo -u MyUser ssh-keygen -t rsa -N '' -f /home/MyUser/.ssh/id_rsa <<< y
-echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEe2Ox3VxwJUCaIOhTpU0y6Yvlq6cTH6msiZluedh3Xl jenkins" > /home/MyUser/.ssh/authorized_keys
+echo "PUT YOUR PUBLIC KEY HERE !!!" > /home/MyUser/.ssh/authorized_keys
 sudo chmod 600 /home/MyUser/.ssh/authorized_keys
 sudo chown -R MyUser:MyUser /home/MyUser/.ssh
 cat >> /etc/sudoers.d/MyUser-sudoers << EOF
