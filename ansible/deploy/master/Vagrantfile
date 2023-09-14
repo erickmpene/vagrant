@@ -1,0 +1,44 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# To enable zsh, please set ENABLE_ZSH env var to "true" before launching vagrant up 
+#   + On windows => $env:ENABLE_ZSH="true"
+#   + On Linux  => export ENABLE_ZSH="true"
+
+Vagrant.configure("2") do |config|
+    config.vm.define "ansible-master" do |ansible|
+      ansible.vm.box = "geerlingguy/centos7"
+      ansible.vm.network "public_network", type: "static", ip: "192.168.50.170", dns_search: "domain.local"
+      ansible.vm.hostname = "ansible-master"
+      ansible.vm.provider "virtualbox" do |v|
+        v.name = "ansible-master"
+        v.memory = 2048
+        v.cpus = 2
+      end
+      ansible.vm.provision :shell do |shell|
+        shell.path = "install_ansible.sh"
+        shell.args = ["ansible-master", "192.168.50.170"]
+        shell.env = { 'ENABLE_ZSH' => ENV['ENABLE_ZSH'] }
+        
+      end
+    end
+    clients=2
+    ram_client=2048
+    cpu_client=2
+    (1..clients).each do |i|
+      config.vm.define "ansible-worker#{i}" do |client|
+        client.vm.box = "geerlingguy/centos7"
+        client.vm.network "public_network", type: "static", ip: "192.168.50.17#{i}", dns_search: "domain.local"
+        client.vm.hostname = "ansible-worker#{i}"
+        client.vm.provider "virtualbox" do |v|
+          v.name = "ansible-worker#{i}"
+          v.memory = ram_client
+          v.cpus = cpu_client
+        end
+        client.vm.provision :shell do |shell|
+          shell.path = "add-on-centos.sh"
+          shell.args = ["node", "192.168.50.170"]
+        end
+      end
+    end
+  end
+  
